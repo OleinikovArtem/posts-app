@@ -21,7 +21,7 @@ git branch        - покажит список локальные ветки п
 git branch name   - создаст локальную ветку с именем name
 
 
-git checkout name - сменет активную ветку на ветку name 
+git checkout name - сменит активную ветку на ветку name 
 
 
 git checkout -b new-branch - создаст ветку newBranch и сменет активную ветку на ветку new-branch 
