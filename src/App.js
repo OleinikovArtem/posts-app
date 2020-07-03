@@ -38,10 +38,10 @@ const App = () => {
     <main className='uk-main'>
       <Header />
       <Switch>
-        <Route exact path='/' > 
+        <Route exact path='posts-app/' > 
           <Posts posts={posts} total={total}/>
         </Route>
-        <Route exact path='/albums'>
+        <Route exact path='posts-app/albums'>
           <Albums />
         </Route>
       </Switch>
