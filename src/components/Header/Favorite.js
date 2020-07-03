@@ -10,7 +10,7 @@ export const Favorite = () => {
           uk-icon="icon: heart; ratio: 2"
         />
         <div className="uk-width-large" uk-dropdown="mode: click">
-          <div className="uk-dropdown-grid uk-child-width-1-1@m" uk-grid>
+          <div className="uk-dropdown-grid uk-child-width-1-1@m" uk-grid="true">
             <div>
               <table className="uk-table uk-table-divider uk-table-justify">
                 <thead>

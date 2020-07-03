@@ -2,10 +2,10 @@ import React from 'react'
 
 export const Pagination = () => {
   return (
-    <ul className="uk-pagination uk-flex-center uk-flex-middle" uk-margin>
+    <ul className="uk-pagination uk-flex-center uk-flex-middle" uk-margin="true">
       <li>
         <a href="#">
-          <span uk-pagination-previous />
+          <span uk-pagination-previous="true" />
         </a>
       </li>
       <li>
@@ -26,7 +26,7 @@ export const Pagination = () => {
       </li>
       <li>
         <a href="#">
-          <span uk-pagination-next />
+          <span uk-pagination-next="true" />
         </a>
       </li>
     </ul>

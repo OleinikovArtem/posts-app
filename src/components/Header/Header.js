@@ -4,7 +4,7 @@ import { Favorite } from './Favorite'
 
 export const Header = () => {
   return (
-    <nav className="uk-navbar uk-navbar-container" uk-navbar>
+    <nav className="uk-navbar uk-navbar-container" uk-navbar="true">
       <Navigation />
       <Favorite />
     </nav>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Post } from './Post'
+import { PostWithImg } from './PostWithImg'
 
 export const PostList = () => {
   return (

@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.Spinner svg {
+  display: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Spinner .loader-container,
+.Spinner .spinner-container {
+  width: 50%;
+  height: 50%;
+  position: relative;
+  filter: url(#gooey);
+}
+
+.Spinner .loader-container > * {
+  position: absolute;
+	display: inline-block;
+	left: 0;
+	width: 4rem;
+	height: 4rem;
+	background: #1EE4F2;
+  top: 25%;
+	border-radius: 50%;
+	animation: loading 4s infinite;
+	transform: scale(.1);
+  opacity: 0;
+}
+.Spinner .loader-container > * :nth-child(1) {
+    animation-delay: .5s;
+  }
+.Spinner .loader-container > * :nth-child(2) {
+    animation-delay: 1s;
+  }
+.Spinner .loader-container > * :nth-child(3) {
+    animation-delay: 1.5s;
+  }
+.Spinner .loader-container > * :nth-child(4) {
+    animation-delay: 2s;
+  }
+
+
+@keyframes loading {
+  50% {
+    transform: scale(1.25);
+    left: 50%;
+    opacity: 1;
+  }
+  100% {
+    transform: scale(.1);
+    left: 100%;
+    opacity: 0;
+  }
 }
