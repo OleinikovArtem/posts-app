@@ -9,13 +9,13 @@ import { Spinner } from './components/Spinner'
 
 const App = () => {
   const [posts, setPosts] = useState([])
-  const [total, setTotal] = useState(null)
-  const [loading, setLoading] = useState(false)
-  // const [favorites, setFavorites] = useState([])
-  const [limit, setlimit] = useState(6)
-  // const [order, setOrder] = useState('asc')
-  // const [view, setView] = useState('grid')
   const [page, setPage] = useState(1)
+  const [limit, setlimit] = useState(6)
+  const [view, setView] = useState('grid')
+  const [loading, setLoading] = useState(false)
+  const [total, setTotal] = useState(null)
+  // const [favorites, setFavorites] = useState([])
+  // const [order, setOrder] = useState('asc')
   // const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -30,20 +30,28 @@ const App = () => {
     setTotal(posts.length)
   }, [posts.length])
 
+  const toggleView = (type) => {
+    setView(type)
+  }
 
-
-  console.log(posts)
   return (
     <main className='uk-main'>
       <Header />
-      <Switch>
-        <Route exact path='/posts-app' > 
-          <Posts posts={posts} total={total}/>
-        </Route>
-        <Route exact path='/albums'>
-          <Albums />
-        </Route>
-      </Switch>
+      {
+      loading ? <Spinner /> :
+        (<Switch>
+          <Route exact path='/posts-app' >
+            <Posts 
+              posts={posts} 
+              view={view}
+              toggleView={toggleView}
+            />
+          </Route>
+          <Route exact path='/albums'>
+            <Albums />
+          </Route>
+        </Switch>)
+      }
     </main>
   )
 }
