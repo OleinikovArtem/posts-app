@@ -17,7 +17,7 @@ const App = () => {
   // const [favorites, setFavorites] = useState([])
   // const [order, setOrder] = useState('asc')
   // const [error, setError] = useState(null)
-
+  console.log('test');
   useEffect(() => {
     // get posts fetch Api
     setLoading(true)
