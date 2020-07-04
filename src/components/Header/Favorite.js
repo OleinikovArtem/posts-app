@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
+import {FavoriteItem} from "./FavoriteItem"
 
-export const Favorite = () => {
+export const Favorite = ({favorites,deleteFavorites}) => {
+
   return (
     <div className="uk-navbar-right">
       <div className="uk-navbar-item">
@@ -20,7 +22,12 @@ export const Favorite = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  {
+                    favorites.map(favorite=>
+                      <FavoriteItem key={favorite.id} deleteFavorites={deleteFavorites} {...favorite} />
+                    )
+                  }
+                  {/* <tr>
                     <td>Title 1</td>
                     <td className="uk-text-right">
                       <button
@@ -39,7 +46,7 @@ export const Favorite = () => {
                         uk-icon="icon: close;"
                       />
                     </td>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
             </div>

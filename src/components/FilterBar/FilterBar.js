@@ -4,13 +4,16 @@ import { LimitFilter } from './LimitFilter'
 import { SortFilter } from './SortFilter'
 import { ViewToggle } from './ViewToggle'
 
-export const FilterBar = ({ toggleView }) => {
+export const FilterBar = ({ toggleView ,setOrder,setLimit,view}) => {
   return (
     <div className="uk-margin-medium-bottom uk-flex">
      <Search />
-      <SortFilter />
-      <LimitFilter />
-      <ViewToggle toggleView={toggleView}/>
+      <SortFilter setOrder={setOrder} />
+      <LimitFilter setLimit={setLimit}  />
+      <ViewToggle 
+        toggleView={toggleView}
+        view={view}
+      />
     </div>
   )
 }
