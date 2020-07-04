@@ -12,16 +12,16 @@ const App = () => {
   const [total, setTotal] = useState(null)
   const [loading, setLoading] = useState(false)
   // const [favorites, setFavorites] = useState([])
-  // const [limit, setlimit] = useState(6)
+  const [limit, setlimit] = useState(6)
   // const [order, setOrder] = useState('asc')
   // const [view, setView] = useState('grid')
-  // const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1)
   // const [error, setError] = useState(null)
 
   useEffect(() => {
     // get posts fetch Api
     setLoading(true)
-    getPosts(setPosts)
+    getPosts(setPosts, { page, limit})
     setLoading(false)
   }, [])
 
@@ -33,15 +33,14 @@ const App = () => {
 
 
   console.log(posts)
-  console.log(total)
   return (
     <main className='uk-main'>
       <Header />
       <Switch>
-        <Route exact path='posts-app/' > 
+        <Route exact path='/posts-app' > 
           <Posts posts={posts} total={total}/>
         </Route>
-        <Route exact path='posts-app/albums'>
+        <Route exact path='/albums'>
           <Albums />
         </Route>
       </Switch>
