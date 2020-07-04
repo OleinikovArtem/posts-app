@@ -4,12 +4,12 @@ import { Pagination } from '../components/Pagination'
 import { LoadMore } from '../components/LoadMore'
 import { PostList } from '../components/PostList/PostList'
 
-export const Posts = () => {
+export const Posts = ({posts}) => {
   return (
     <div className="uk-section">
       <div className="uk-container">
         <FilterBar />
-        <PostList />
+        <PostList posts={posts} total/>
         <LoadMore />
         <Pagination />
       </div>
