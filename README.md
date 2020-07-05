@@ -45,6 +45,4 @@ git merge master -
 
 
 
-git checkout name - сменет активную ветку на ветку name 
-
 
