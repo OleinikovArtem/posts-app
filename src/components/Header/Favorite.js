@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
-import {FavoriteItem} from "./FavoriteItem"
+import React from 'react'
+import { FavoriteItem } from "./FavoriteItem"
 
-export const Favorite = ({favorites,deleteFavorites}) => {
-
+export const Favorite = ({ posts, favorites, toggleFavorites }) => {
+  const favoritesItems = posts.filter(post => favorites.includes(post.id))
   return (
     <div className="uk-navbar-right">
       <div className="uk-navbar-item">
@@ -23,30 +23,12 @@ export const Favorite = ({favorites,deleteFavorites}) => {
                 </thead>
                 <tbody>
                   {
-                    favorites.map(favorite=>
-                      <FavoriteItem key={favorite.id} deleteFavorites={deleteFavorites} {...favorite} />
-                    )
+                    favoritesItems.map(favorit =>
+                      <FavoriteItem key={favorit.id}
+                        {...favorit}
+                        toggleFavorites={toggleFavorites}
+                      />)
                   }
-                  {/* <tr>
-                    <td>Title 1</td>
-                    <td className="uk-text-right">
-                      <button
-                        className="uk-button"
-                        type="button"
-                        uk-icon="icon: close;"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Title 2</td>
-                    <td className="uk-text-right">
-                      <button
-                        className="uk-button"
-                        type="button"
-                        uk-icon="icon: close;"
-                      />
-                    </td>
-                  </tr> */}
                 </tbody>
               </table>
             </div>

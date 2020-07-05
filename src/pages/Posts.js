@@ -4,20 +4,28 @@ import { Pagination } from '../components/Pagination'
 import { LoadMore } from '../components/LoadMore'
 import { PostList } from '../components/PostList/PostList'
 
-export const Posts = ({ posts, view, toggleView,addFavorites,deleteFavorites,setOrder,setLimit}) => {
+export const Posts = ({ 
+  posts, 
+  view, 
+  toggleView, 
+  favorites, 
+  toggleFavorites, 
+  setOrder, 
+  setLimit 
+}) => {
   return (
     <div className="uk-section">
       <div className="uk-container">
-        <FilterBar 
+        <FilterBar
           setOrder={setOrder}
           toggleView={toggleView}
           view={view}
           setLimit={setLimit}
         />
         <PostList
-           view={view}
-          deleteFavorites={deleteFavorites}
-          addFavorites={addFavorites}
+          favorites={favorites}
+          toggleFavorites={toggleFavorites}
+          view={view}
           posts={posts}
         />
         <LoadMore />
