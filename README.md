@@ -24,7 +24,7 @@ git branch name   - создаст локальную ветку с именем
 git checkout name - сменит активную ветку на ветку name 
 
 
-git checkout -b new-branch - создаст ветку newBranch и сменет активную ветку на ветку new-branch 
+git checkout -b new-branch - создаст ветку new-branch и сменет активную ветку на ветку new-branch 
 
 
 git pull origin master - использывать эту команду находясь на локальной ветке master . для Получения последней актуальной версии с удалённого репозитория
