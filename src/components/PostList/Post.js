@@ -1,27 +1,20 @@
-import React,{useState,useEffect} from 'react'
-import { findAllByTestId } from '@testing-library/react';
+import React from 'react'
 
 
-export const Post = ({ id, title, body ,addFavorites,deleteFavorites}) => {
- const [color,setColor] = useState('#999')
-
-  const handleToggle = () =>{
-    if (color === '#999'){
-      addFavorites(id,title) 
-      setColor('red')
-    } 
-
-    if (color === 'red' ){
-      deleteFavorites(id);
-      setColor('#999')
-    }
-  };
-
-   return (<div>
+export const Post = ({ id, title, body, toggleFavorites, favorit }) => {
+  const activeStyle = favorit ? { color: 'red' } : {}
+  
+  return (<div>
     <div className="uk-card uk-card-default uk-margin-medium-bottom">
       <div className="uk-card-header">
         <h3 className="uk-card-title uk-margin-remove-bottom uk-flex uk-flex-middle uk-flex-between">
-          {title} <a href="#" className="uk-icon-link" style={{color:color}} uk-icon="heart" onClick={handleToggle} />
+          {title}
+          <button
+            style={activeStyle}
+            className="uk-icon-link"
+            uk-icon="heart"
+            onClick={() => toggleFavorites(id)}
+          />
         </h3>
       </div>
       <div className="uk-card-body">
@@ -30,10 +23,11 @@ export const Post = ({ id, title, body ,addFavorites,deleteFavorites}) => {
         </p>
       </div>
       <div className="uk-card-footer">
-        <a href="#" className="uk-button uk-button-text">
+        <button href="#" className="uk-button uk-button-text">
           Read more
-                </a>
+        </button>
       </div>
     </div>
-  </div>)
+  </div>
+  )
 }
