@@ -1,31 +1,44 @@
 import React from 'react'
 
-export const Pagination = () => {
+
+const pageNumbers = [1,2,3,4,5];
+
+export const Pagination = ({page,setPage}) => {
+
+  const handlePage = (e,page) => {
+    e.preventDefault();
+    setPage(page)
+  }
+
+  const handlePrev = (e) => {
+    e.preventDefault();
+    setPage(page => page-1);
+  }
+
+  const handleNext = (e) => {
+    e.preventDefault();
+
+    setPage(page => page = page + 1 >=6 ? 5 : page + 1);
+  }
+
   return (
     <ul className="uk-pagination uk-flex-center uk-flex-middle" uk-margin="true">
       <li>
-        <a href="/">
+        <a onClick={handlePrev} href="/">
           <span uk-pagination-previous="true" />
         </a>
       </li>
+      {
+        pageNumbers.map(pageNumber =>{
+          let className = pageNumber === page ? "uk-active" : "";
+          return(
+            <li className={className} >
+            <a onClick={(e) => handlePage(e,pageNumber)} href="/">{pageNumber}</a>
+          </li>
+        )})
+      }
       <li>
-        <a href="/">1</a>
-      </li>
-      {/* <li class="uk-disabled"><span>...</span></li> */}
-      <li>
-        <a href="/">2</a>
-      </li>
-      <li>
-        <a href="/">3</a>
-      </li>
-      <li className="uk-active">
-        <span>4</span>
-      </li>
-      <li>
-        <a href="/">5</a>
-      </li>
-      <li>
-        <a href="/">
+        <a onClick={handleNext} href="/">
           <span uk-pagination-next="true" />
         </a>
       </li>

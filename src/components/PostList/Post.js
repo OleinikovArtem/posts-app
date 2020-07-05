@@ -2,7 +2,7 @@ import React from 'react'
 
 
 export const Post = ({ id, title, body, toggleFavorites, favorit }) => {
-  const activeStyle = favorit ? { color: 'red' } : {}
+  const activeStyle = favorit ? { color: 'red' } : {} // если этот элемент есть в массиве favoite -> красим его 
   
   return (<div>
     <div className="uk-card uk-card-default uk-margin-medium-bottom">

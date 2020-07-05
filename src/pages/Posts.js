@@ -11,7 +11,9 @@ export const Posts = ({
   favorites, 
   toggleFavorites, 
   setOrder, 
-  setLimit 
+  setLimit,
+  page,
+  setPage
 }) => {
   return (
     <div className="uk-section">
@@ -29,7 +31,7 @@ export const Posts = ({
           posts={posts}
         />
         <LoadMore />
-        <Pagination />
+        <Pagination page={page} setPage={setPage} />
       </div>
     </div>
   )

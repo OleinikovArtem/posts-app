@@ -3,7 +3,8 @@
 // }
 
 export const getPosts = async (callBack = () => {}, {page = 1, limit = 6}) => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts?page=${page}&_limit=${limit}`)
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`)
   const data = await res.json()
+  console.log(data);
   callBack(data)
 }

@@ -34,12 +34,12 @@ const App = () => {
 
   const toggleFavorites = id => {
     let updateFavorites = []
-    if (favorites.includes(id)) {
-      updateFavorites = favorites.filter(favoritId => favoritId !== id)
+    if (favorites.includes(id)) { // если в favorite есть этот айди по которому мы кликнули
+      updateFavorites = favorites.filter(favoritId => favoritId !== id)  // удаляем его из updateFavorite 
     } else {
-      updateFavorites = [...favorites, id]
+      updateFavorites = [...favorites, id] // если найден добавляем его в updateFavorites 
     }
-    setFavorites(updateFavorites);
+    setFavorites(updateFavorites); // сетим изменения в favorites 
   }
 
 
@@ -75,6 +75,8 @@ const App = () => {
                 toggleView={toggleView}
                 setOrder={setOrder}
                 setLimit={setLimit}
+                page={page}
+                setPage={setPage}
               />
             </Route>
             <Route exact path='/albums'>
