@@ -13,7 +13,9 @@ export const Posts = ({
   setOrder, 
   setLimit,
   page,
-  setPage
+  setPage,
+  setLoadmore,
+  loadmore
 }) => {
   return (
     <div className="uk-section">
@@ -30,7 +32,7 @@ export const Posts = ({
           view={view}
           posts={posts}
         />
-        <LoadMore />
+        <LoadMore setLoadmore={setLoadmore} loadmore={loadmore} />
         <Pagination page={page} setPage={setPage} />
       </div>
     </div>

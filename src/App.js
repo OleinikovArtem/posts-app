@@ -14,6 +14,7 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [favorites, setFavorites] = useState([])
   const [order, setOrder] = useState('asc')
+  const [loadmore,setLoadmore] =  useState(0)
   // const [total, setTotal] = useState(null)
   // const [error, setError] = useState(null)
 
@@ -23,6 +24,19 @@ const App = () => {
     getPosts(setPosts, { page, limit })
     setLoading(false)
   }, [limit, page])
+
+  useEffect(()=>{
+    setLoading(true)
+    setLimit(limit => limit * 2)
+    console.log('limit in useEffect',limit)
+
+    getPosts(setPosts, { page, limit})
+
+    setLimit(limit => limit / 2)
+    setLoading(false)
+  },[loadmore])
+  console.log('limit',limit)
+  console.log('loadmore',loadmore)
 
 
   // useEffect(() => {
@@ -77,6 +91,8 @@ const App = () => {
                 setLimit={setLimit}
                 page={page}
                 setPage={setPage}
+                setLoadmore={setLoadmore}
+                loadmore={loadmore}
               />
             </Route>
             <Route exact path='/albums'>
