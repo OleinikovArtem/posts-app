@@ -24,11 +24,11 @@ const App = () => {
     // get posts by limit 
     getPosts(
       setPosts,
-      { activePage, limit, search: searchValue, order },
+      { activePage, limit, search: searchValue, },
       setLoading,
       setTotal
     )
-  }, [limit, activePage, searchValue, order])
+  }, [limit, activePage, searchValue ])
 
   useEffect(() => {
     const pages = Math.round(total / limit)
@@ -44,10 +44,11 @@ const App = () => {
     } else {
       updateFavorites = [...favorites, id]
     }
-    setFavorites(updateFavorites);
+    setFavorites(updateFavorites)
   }
 
   const getSearchValue = (value) => {
+    setActivePage(1)
     setSearchValue(value)
   }
 
@@ -67,6 +68,23 @@ const App = () => {
     setActivePage(updateActivePage)
   }
 
+  const sortPosts = (order) => {
+    const updatePosts =  posts.sort((a, b) => {
+      switch (order) {
+        case 'asc':
+          return a.title > b.title ? 1 : -1
+
+        case 'desc':
+          return a.title < b.title ? 1 : -1
+
+        default:
+          break
+      }
+    })
+    console.log(updatePosts)
+    setPosts(updatePosts)
+  }
+
 
   return (
     <main className='uk-main'>
@@ -84,7 +102,7 @@ const App = () => {
             posts={posts}
             view={view}
             toggleView={toggleView}
-            setOrder={setOrder}
+            setOrder={sortPosts}
             setLimit={setLimit}
             isLoading={isLoading}
             pages={pages}

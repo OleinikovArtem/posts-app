@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 export const Search = ({ searchPosts, isLoading }) => {
   const [value, setValue] = useState('')
   
-  const changeValue = ({target: {value}}) => setValue(value.trim())
+  // const changeValue = ({target: {value}}) => setValue(value.trim())
+  const changeValue = (e) => setValue(e.target.value.trim())
 
   const Spinner = (
     <span
