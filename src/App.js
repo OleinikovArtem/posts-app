@@ -10,17 +10,30 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [searchValue, setSearchValue] = useState(null)
   const [page, setPage] = useState(1)
+  const [activePage, setActivePage] = useState(1)
+  const [pages, setPages] = useState(null)
   const [limit, setLimit] = useState(6)
   const [view, setView] = useState('grid')
   const [isLoading, setLoading] = useState(false)
   const [favorites, setFavorites] = useState([])
   const [order, setOrder] = useState('asc')
+  const [total, setTotal] = useState(null)
 
 
   useEffect(() => {
     // get posts by limit 
-    getPosts(setPosts, { page, limit, search: searchValue, order }, setLoading)
-  }, [limit, page, searchValue, order])
+    getPosts(
+      setPosts,
+      { activePage, limit, search: searchValue, order },
+      setLoading,
+      setTotal
+    )
+  }, [limit, activePage, searchValue, order])
+
+  useEffect(() => {
+    const pages = Math.round(total / limit)
+    setPages(pages)
+  }, [total, limit])
 
   const toggleView = type => setView(type)
 
@@ -37,6 +50,23 @@ const App = () => {
   const getSearchValue = (value) => {
     setSearchValue(value)
   }
+
+  const handlePagination = (type) => {
+    let updateActivePage = null
+
+    switch (type) {
+      case 'prev':
+        updateActivePage = activePage === 1 ? activePage : activePage - 1
+        break
+      case 'next':
+        updateActivePage = pages > activePage ? activePage + 1 : activePage
+        break
+      default:
+        updateActivePage = type
+    }
+    setActivePage(updateActivePage)
+  }
+
 
   return (
     <main className='uk-main'>
@@ -57,6 +87,10 @@ const App = () => {
             setOrder={setOrder}
             setLimit={setLimit}
             isLoading={isLoading}
+            pages={pages}
+            handlePagination={handlePagination}
+            activePage={activePage}
+            setActivePage={setActivePage}
           />
         </Route>
         <Route exact path='/albums'>

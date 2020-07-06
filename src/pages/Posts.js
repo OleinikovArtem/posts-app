@@ -14,9 +14,12 @@ export const Posts = ({
   setOrder,
   setLimit,
   searchPosts,
-  isLoading
+  isLoading,
+  pages,
+  handlePagination,
+  activePage,
+  setActivePage,
 }) => {
-  console.log(isLoading)
   return (
     <div className="uk-section">
       <div className="uk-container">
@@ -39,7 +42,12 @@ export const Posts = ({
                 posts={posts}
               />
               <LoadMore />
-              <Pagination />
+              <Pagination 
+                pages={pages}
+                handlePagination={handlePagination}
+                activePage={activePage}
+                setActivePage={setActivePage} 
+              />
             </Fragment>
           )
 

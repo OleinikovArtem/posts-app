@@ -1,34 +1,33 @@
 import React from 'react'
 
-export const Pagination = () => {
+export const Pagination = ({ pages, activePage, handlePagination, setActivePage}) => {
+  const Pages = new Array(pages).fill('')
+
   return (
     <ul className="uk-pagination uk-flex-center uk-flex-middle" uk-margin="true">
-      <li>
-        <a href="/">
+      <li onClick={() => handlePagination('prev')} >
+        <span>
           <span uk-pagination-previous="true" />
-        </a>
+        </span>
       </li>
-      <li>
-        <a href="/">1</a>
-      </li>
-      {/* <li class="uk-disabled"><span>...</span></li> */}
-      <li>
-        <a href="/">2</a>
-      </li>
-      <li>
-        <a href="/">3</a>
-      </li>
-      <li className="uk-active">
-        <span>4</span>
-      </li>
-      <li>
-        <a href="/">5</a>
-      </li>
-      <li>
-        <a href="/">
+
+      {
+        Pages.map((_ , i) => (
+          <li key={i}
+            className={activePage === i + 1 ? "uk-active" : ""}
+            onClick={() => handlePagination(i + 1)}
+          >
+            <span style={{cursor: 'pointer'}} >{i + 1}</span>
+          </li>
+        ))
+      }
+
+      <li onClick={() => handlePagination('next')}>
+        <span>
           <span uk-pagination-next="true" />
-        </a>
+        </span>
       </li>
+
     </ul>
   )
 }

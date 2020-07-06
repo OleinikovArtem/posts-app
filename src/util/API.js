@@ -1,14 +1,17 @@
-// const config = {
-//   method: 'GET',
-// }
+const config = {
+  method: 'GET',
+}
 
 export const getPosts = async (
     callBack = () => { },
-    { page = 1, limit = 6, search = null, order = 'asc' }, 
-    setLoading) => {
+  { activePage = 1, limit = 6, search = null, order = 'asc' }, 
+    setLoading,
+    setCount) => {
   setLoading(true)
   const searchValue = search ? `?q=${search}&` : '?_'
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts${searchValue}page=${page}&_limit=${limit}&_order=${order}`)
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts${searchValue}page=${activePage}&_limit=${limit}&_order=${order}`)
+  const total = res.headers.get('X-Total-Count')
+  setCount(total)
   const data = await res.json()
   setLoading(false)
   callBack(data)
