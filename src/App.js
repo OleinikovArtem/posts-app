@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Albums } from './pages/Albums'
 import { Posts } from './pages/Posts'
+import { Post } from './pages/Post'
 import { Header } from './components/Header/Header'
 import { getPosts } from './util/API'
 
@@ -110,6 +111,9 @@ const App = () => {
             activePage={activePage}
             setActivePage={setActivePage}
           />
+        </Route>
+        <Route exact path='/posts-app/post/:id'>
+          <Post/>
         </Route>
         <Route exact path='/albums'>
           <Albums />
