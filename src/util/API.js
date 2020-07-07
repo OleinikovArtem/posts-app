@@ -8,7 +8,7 @@ export const getPosts = async (
   setLoading,
   setCount) => {
   setLoading(true)
-  const searchValue = search ? `?q=${search}&` : '?_'
+  const searchValue = search ? `?q=${search}&_` : '?_'
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts${searchValue}page=${activePage}&_limit=${limit}&_order=${order}`)
   const total = res.headers.get('X-Total-Count')
   setCount(total)
