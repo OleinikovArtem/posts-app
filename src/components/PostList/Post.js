@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 export const Post = ({ id, title, body, toggleFavorites, favorit }) => {
@@ -23,9 +24,9 @@ export const Post = ({ id, title, body, toggleFavorites, favorit }) => {
         </p>
       </div>
       <div className="uk-card-footer">
-        <button href="#" className="uk-button uk-button-text">
+        <Link to={`/posts-app/post/${id}`} className="uk-button uk-button-text">
           Read more
-        </button>
+        </Link>
       </div>
     </div>
   </div>
